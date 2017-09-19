@@ -22,11 +22,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainFragment = new MainFragment();
+        if(savedInstanceState == null) {
+            mainFragment = new MainFragment();
 
-        fTrans = getSupportFragmentManager().beginTransaction();
-        fTrans.add(R.id.frgmCont, mainFragment);
-        fTrans.commit();
+            fTrans = getSupportFragmentManager().beginTransaction();
+            fTrans.add(R.id.frgmCont, mainFragment);
+            fTrans.commit();
+        }
 
        // DataBaseHandler db = new DataBaseHandler(this);
 //

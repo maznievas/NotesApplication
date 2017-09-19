@@ -1,6 +1,7 @@
 package com.andrey.notesapplication;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
+    final String TAG = "mLog";
     private List<Note> notes;
 
     public RecyclerAdapter(List<Note> dataset) {
@@ -41,9 +43,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return notes.size();
     }
 
+    public Note getNoteByPosition(int position)
+    {
+        if(position <= getItemCount()) {
+            Log.d(TAG, "id of selected note = " + String.valueOf(notes.get(position).getId()));
+            return notes.get(position);
+        }
+        else
+            return new Note();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
+
         public TextView content;
         public TextView date;
+        final String TAG = "mLog";
 
         public ViewHolder(View v) {
             super(v);
