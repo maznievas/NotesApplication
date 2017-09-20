@@ -62,9 +62,7 @@ public class MainFragment extends Fragment implements DataBasePresenter.View {
         context = getContext();
 
         dbPresenter = new DataBasePresenter(this, this.getContext());
-     //   dbPresenter.addNote("Hello, this is tenth test note with MVP and fragment and automatic date and time. I hope it will be success.",
-      //          String.valueOf(new SimpleDateFormat("d MMMM, yyyy  HH:mm", Locale.getDefault()).format(new Date())));
-
+     //
       //  Log.d(TAG, String.valueOf(new SimpleDateFormat("d MMMM, yyyy  HH:mm", Locale.getDefault()).format(new Date())));
         dbPresenter.updateList();
 
@@ -72,11 +70,12 @@ public class MainFragment extends Fragment implements DataBasePresenter.View {
                 mRecyclerView, new ClickListener() {
             @Override
             public void onClick(View view, final int position) {
-                //Values are passing to activity & to fragment as well
                 Toast.makeText(context, "Single Click on position :" + position,
                         Toast.LENGTH_SHORT).show();
-                //mAdapter.getNoteByPosition(position);
-                //mAdapter.getIdByPosition(position);
+
+                Intent intent = new Intent(getActivity(), EditNoteActivity.class);
+                intent.putExtra("id",  String.valueOf(mAdapter.getIdByPosition(position)));
+                startActivity(intent);
             }
 
             @Override
@@ -89,8 +88,10 @@ public class MainFragment extends Fragment implements DataBasePresenter.View {
         fabNewNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(getActivity(), EditNoteActivity.class);
-                getActivity().startActivity(intent);
+                intent.putExtra("id",  "-1");
+                startActivity(intent);
             }
         });
 
@@ -105,6 +106,9 @@ public class MainFragment extends Fragment implements DataBasePresenter.View {
             Log.d(TAG, log);
         }
         mAdapter = new RecyclerAdapter(allNotes);
+        //mAdapter.
         mRecyclerView.setAdapter(mAdapter);
     }
+
+
 }

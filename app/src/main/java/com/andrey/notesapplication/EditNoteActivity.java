@@ -1,17 +1,19 @@
 package com.andrey.notesapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
+import net.skoumal.fragmentback.BackFragmentFragmentActivity;
 
 /**
  * Created by sts on 19.09.17.
  */
 
-public class EditNoteActivity extends AppCompatActivity {
+public class EditNoteActivity extends  BackFragmentFragmentActivity {
 
-    EditNotePresenter editNotePresenter;
-    FragmentTransaction fTrans;
     EditNoteFragment editNoteFragment;
 
     @Override
@@ -19,15 +21,19 @@ public class EditNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_note_activity);
 
-        editNotePresenter = new EditNotePresenter();
+        Intent intent = getIntent();
+        String  idStr = intent.getStringExtra("id");
+        Log.d("mLog", "getted id = " + idStr);
+
 
         if(savedInstanceState == null)
         {
-            editNoteFragment = new EditNoteFragment();
+            editNoteFragment = EditNoteFragment.newInstance(idStr);
 
-            fTrans = getSupportFragmentManager().beginTransaction();
-            fTrans.add(R.id.fragmentContainer, editNoteFragment);
-            fTrans.commit();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.fragmentContainer, editNoteFragment)
+                    .commit();
         }
     }
 }

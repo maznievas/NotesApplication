@@ -53,6 +53,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             return new Note();
     }
 
+    public int getIdByPosition(int position)
+    {
+        if(position <= getItemCount()) {
+            return notes.get(position).getId();
+        }
+        else return 0;
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView content;

@@ -78,7 +78,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         if(cursor != null)
             cursor.moveToFirst();
 
-        Note note = new Note(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
+        Note note = new Note(Integer.parseInt(cursor.getString(0)), cursor.getString(2), cursor.getString(1));
         return note;
     }
 
