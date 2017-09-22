@@ -1,27 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="6dp"
     card_view:cardCornerRadius="5dp"
-    card_view:cardElevation="10dp"
-    android:layout_margin="6dp">
+    card_view:cardElevation="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:weightSum="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:weightSum="1">
 
-        <TextView
-            android:id="@+id/content"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="20sp" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible"
+                card_view:srcCompat="@android:drawable/ic_lock_lock" />
+
+            <!--<FrameLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<View-->
+            <!--android:background="@drawable/gradient_from_transparent_to_white"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="80dp"/>-->
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="3"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:text="TextView"
+                android:textSize="20sp"
+                tools:text="alsdfjlk asldfkjalks jdflka sjf alsdfjlk asldfkjalks jdflka sjf alsdfjlk asldfkjalks jdflka sjf alsdfjlk asldfkjalks jdflka sjf alsdfjlk asldfkjalks jdflka sjf alsdfjlk asldfkjalks jdflka sjf " />
+            <!--</FrameLayout>-->
+        </LinearLayout>
 
         <TextView
             android:id="@+id/date"

@@ -77,8 +77,10 @@ public class EditNoteFragment extends Fragment  implements EditNotePresenter.Vie
         Log.d(TAG, "onBackPressed()");
 
         Log.d(TAG, "Note id " + editNotePresenter.getIdNOte());
-        if(editNotePresenter.getIdNOte() == -1)
-            editNotePresenter.addNote(mAutoCompTV.getText().toString());
+        if(editNotePresenter.getIdNOte() == -1) {
+            if(!mAutoCompTV.getText().toString().equals("" ))
+                editNotePresenter.addNote(mAutoCompTV.getText().toString());
+        }
         else
             editNotePresenter.saveNote(mAutoCompTV.getText().toString(), editNotePresenter.getIdNOte());
 
